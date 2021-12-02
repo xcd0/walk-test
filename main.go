@@ -11,12 +11,12 @@ func main() {
 }
 
 func Run() {
-	var w MainWindow
-	w = MainWindow{
+	var w *MainWindow
+	w = &MainWindow{
 		Title:    "test",
 		Size:     Size{400, 200},
 		Layout:   VBox{},
-		AssignTo: w.AssignTo,
+		AssignTo: &w,
 		Children: []Widget{
 			PushButton{
 				Text: "Exit",
@@ -26,5 +26,5 @@ func Run() {
 			},
 		},
 	}
-	w.Run()
+	(*w).Run()
 }
