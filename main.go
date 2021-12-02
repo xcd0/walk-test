@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/lxn/walk"
 	. "github.com/lxn/walk/declarative"
 )
 
@@ -9,19 +10,18 @@ func main() {
 	// something
 	Run()
 }
-
 func Run() {
-	var w *MainWindow
-	w = &MainWindow{
+	var mw *walk.MainWindow
+	w := &MainWindow{
 		Title:    "test",
 		Size:     Size{400, 200},
 		Layout:   VBox{},
-		AssignTo: &w,
+		AssignTo: &mw,
 		Children: []Widget{
 			PushButton{
 				Text: "Exit",
 				OnClicked: func() {
-					(**w.AssignTo).Close()
+					mw.Close()
 				},
 			},
 		},
